@@ -13,7 +13,7 @@ int main (int argc, char** argv)
 	int choice1 = 0, choice2 = 0, choice3 = 0;
 	int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
 	initializeGame(2, k, 4, &myGameState);
-	if(cardEffect(adventurer, choice1, choice2, choice3, &G, 0, NULL) == 0)
+	if(cardEffect(adventurer, choice1, choice2, choice3, &myGameState, 0, NULL) == 0)
 		printf("Adventurer card behaved correctly\n");
 	else
 		printf("Adventurer card did not behave correctly\n");

@@ -23,7 +23,7 @@ int main (int argc, char** argv)
 	{
         testResult = initializeGame(2, cards, 5, &myGameState);
         testResult = whoseTurn(&myGameState);
-        assert(testResult == G.whoseTurn);
+        assert(testResult == myGameState.whoseTurn);
 		printf("round: %d\n", i);
 	}
 	printf("\n=============== End Test Whose Turn ===================\n");

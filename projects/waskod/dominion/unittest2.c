@@ -29,7 +29,7 @@ int main (int argc, char** argv)
 		printf("Expected Remaining BuyCount: 1\n");
 		printf("Actual Remaining BuyCount: %d\n", myGameState.numBuys);
 		
-		printf("Should purchase be accepted? YES\n")
+		printf("Should purchase be accepted? YES\n");
 		
 		if(testResult == 0)
 			printf("Accepted\n");
@@ -51,7 +51,7 @@ int main (int argc, char** argv)
 	printf("Expected Remaining BuyCount: 1\n");
 	printf("Actual Remaining BuyCount: %d\n", myGameState.numBuys);
 		
-	printf("Should purchase be accepted? NO\n")
+	printf("Should purchase be accepted? NO\n");
 		
 	if(testResult == 0)
 		printf("Accepted\n");
@@ -73,7 +73,7 @@ int main (int argc, char** argv)
 	printf("Expected Remaining BuyCount: 1\n");
 	printf("Actual Remaining BuyCount: %d\n", myGameState.numBuys);
 		
-	printf("Should purchase be accepted? YES\n")
+	printf("Should purchase be accepted? YES\n");
 		
 	if(testResult == 0)
 		printf("Accepted\n");
@@ -96,7 +96,7 @@ int main (int argc, char** argv)
 	printf("Expected Remaining BuyCount: 0\n");
 	printf("Actual Remaining BuyCount: %d\n", myGameState.numBuys);
 		
-	printf("Should purchase be accepted? NO\n")
+	printf("Should purchase be accepted? NO\n");
 		
 	if(testResult == 0)
 		printf("Accepted\n");
@@ -117,7 +117,7 @@ int main (int argc, char** argv)
 	printf("Expected Remaining BuyCount: 0\n");
 	printf("Actual Remaining BuyCount: %d\n", myGameState.numBuys);
 		
-	printf("Should purchase be accepted? NO\n")
+	printf("Should purchase be accepted? NO\n");
 		
 	if(testResult == 0)
 		printf("Accepted\n");

@@ -1,5 +1,4 @@
 // Unit test for Card 1: Smithy
-#include "myassert.h"
 #include "dominion.h"
 #include <stdio.h>
 #include "rngs.h"
@@ -21,7 +20,7 @@ int main (int argc, char** argv)
 	myGameState.deckCount[0] = 3;
 	
 	int i;
-	for(i=0; i<3 i++)
+	for(i=0; i<3; i++)
 		myGameState.deck[0][i] = province;  
 
 	playCard(0,0,0,0,&myGameState);

@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 	if(testResult == 0)
 		printf("Actual Result: game is not over");
 	else
-		printf("Actual Result: game is over";
+		printf("Actual Result: game is over");
 
 	printf("\n=============== End Testing is Game Over ===================\n");
 	return 0;

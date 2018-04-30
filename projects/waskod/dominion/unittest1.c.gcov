@@ -1,0 +1,92 @@
+        -:    0:Source:unittest1.c
+        -:    0:Graph:unittest1.gcno
+        -:    0:Data:unittest1.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:// Unit test 1 for dominion.c function: updateCoins
+        -:    2:#include "dominion.h"
+        -:    3:#include "dominion_helpers.h"
+        -:    4:#include "rngs.h"
+        -:    5:#include <string.h>
+        -:    6:#include <stdio.h>
+        -:    7:#include <math.h>
+        -:    8:#include <stdlib.h>
+        -:    9:#include <assert.h>
+        -:   10:
+        -:   11:
+        1:   12:int main (int argc, char** argv)	
+        -:   13:{
+        -:   14:	struct gameState myGameState;
+        1:   15:	myGameState.coins = 0;
+        -:   16:	int i;
+        -:   17:	
+        1:   18:	printf("\n=============== Begin Testing Update Coins ===================\n");
+        -:   19:	
+        1:   20:	printf("\n----- Testing Hand of All Copper -----\n");
+       11:   21:	for(i=0; i < 10; i++)
+        -:   22:	{
+       10:   23:		myGameState.hand[0][i] = copper;
+        -:   24:	}
+        -:   25:	
+        1:   26:	updateCoins(0,&myGameState, 0);
+        -:   27:	
+        1:   28:	printf("\nExpecting 10 Copper Coins\n");
+        1:   29:	printf("Actual Ammount: %d\n", myGameState.coins);
+        -:   30:	
+        1:   31:	if(myGameState.coins == 10)
+    #####:   32:		printf("Copper Test: Passed\n");
+        -:   33:	else
+        1:   34:		printf("Copper Test: failed\n");
+        -:   35:	
+        1:   36:	printf("\n----- Testing Hand of All Silver -----\n");
+       11:   37:	for(i=0; i < 10; i++)
+        -:   38:	{
+       10:   39:		myGameState.hand[0][i] = silver;
+        -:   40:	}
+        -:   41:	
+        1:   42:	updateCoins(0,&myGameState, 0);
+        -:   43:	
+        1:   44:	printf("\nExpecting 10 Silver Coins\n");
+        1:   45:	printf("Actual Ammount: %d\n", myGameState.coins);
+        -:   46:	
+        1:   47:	if(myGameState.coins == 10)
+    #####:   48:		printf("Silver Test: Passed\n");
+        -:   49:	else
+        1:   50:		printf("Silver Test: failed\n");
+        -:   51:	
+        1:   52:	printf("\n----- Testing Hand of All Gold -----\n");
+       11:   53:	for(i=0; i < 10; i++)
+        -:   54:	{
+       10:   55:		myGameState.hand[0][i] = gold;
+        -:   56:	}
+        -:   57:	
+        1:   58:	updateCoins(0,&myGameState, 0);
+        -:   59:	
+        1:   60:	printf("\nExpecting 10 Gold Coins\n");
+        1:   61:	printf("Actual Ammount: %d\n", myGameState.coins);
+        -:   62:	
+        1:   63:	if(myGameState.coins == 10)
+    #####:   64:		printf("Gold Test: Passed\n");
+        -:   65:	else
+        1:   66:		printf("Gold Test: failed\n");
+        -:   67:	
+        1:   68:	printf("\n----- Testing Hand of No Coins -----\n");
+       11:   69:	for(i=0; i < 10; i++)
+        -:   70:	{
+       10:   71:		myGameState.hand[0][i] = smithy;
+        -:   72:	}
+        -:   73:
+        1:   74:	updateCoins(0,&myGameState, 0);
+        -:   75:	
+        1:   76:	printf("\nExpecting 0 Coins\n");
+        1:   77:	printf("Actual Ammount: %d\n", myGameState.coins);
+        -:   78:	
+        1:   79:	if(myGameState.coins == 0)
+        1:   80:		printf("None Test: Passed\n");
+        -:   81:	else
+    #####:   82:		printf("None Test: failed\n");
+        -:   83:	
+        1:   84:	printf("\n=============== End Testing Update Coins ===================\n");
+        -:   85:
+        1:   86:	return 0;
+        -:   87:}

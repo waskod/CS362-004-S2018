@@ -1,0 +1,135 @@
+        -:    0:Source:unittest2.c
+        -:    0:Graph:unittest2.gcno
+        -:    0:Data:unittest2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:// Unit test 2 for dominion.c function: buyCard
+        -:    2:#include "dominion.h"
+        -:    3:#include "dominion_helpers.h"
+        -:    4:#include "rngs.h"
+        -:    5:#include <string.h>
+        -:    6:#include <stdio.h>
+        -:    7:#include <math.h>
+        -:    8:#include <stdlib.h>
+        -:    9:#include <assert.h>
+        -:   10:
+        -:   11:
+        1:   12:int main (int argc, char** argv)	
+        -:   13:{
+        1:   14:	printf("\n=============== Begin Testing Buy Card===================\n");
+        -:   15:	struct gameState myGameState;
+        -:   16:	int testResult;
+        -:   17:	
+        -:   18:	
+        1:   19:	printf("----- Testing Plenty of Coins -----\n");
+        1:   20:	myGameState.coins = 10;
+        1:   21:	myGameState.numBuys = 2;
+        1:   22:	testResult = buyCard(2, &myGameState);
+        -:   23:		
+        1:   24:		printf("Starting Coins: 10\n");
+        1:   25:		printf("Expected Remaining Coins: 8\n");
+        1:   26:		printf("Actual Remaining Coins: %d\n", myGameState.coins);
+        -:   27:		
+        1:   28:		printf("Starting BuyCount: 2\n");
+        1:   29:		printf("Expected Remaining BuyCount: 1\n");
+        1:   30:		printf("Actual Remaining BuyCount: %d\n", myGameState.numBuys);
+        -:   31:		
+        1:   32:		printf("Should purchase be accepted? YES\n");
+        -:   33:		
+        1:   34:		if(testResult == 0)
+    #####:   35:			printf("Accepted\n");
+        -:   36:		else
+        1:   37:			printf("Denied\n");
+        -:   38:		
+        -:   39:	
+        1:   40:	printf("----- Testing too few coins -----\n");
+        -:   41:	
+        1:   42:	myGameState.coins = 0;
+        1:   43:	myGameState.numBuys = 2;
+        1:   44: 	testResult = buyCard(2, &myGameState);
+        -:   45:	
+        1:   46:	printf("Starting Coins: 0\n");
+        1:   47:	printf("Expected Remaining Coins: 0\n");
+        1:   48:	printf("Actual Remaining Coins: %d\n", myGameState.coins);
+        -:   49:		
+        1:   50:	printf("Starting BuyCount: 2\n");
+        1:   51:	printf("Expected Remaining BuyCount: 1\n");
+        1:   52:	printf("Actual Remaining BuyCount: %d\n", myGameState.numBuys);
+        -:   53:		
+        1:   54:	printf("Should purchase be accepted? NO\n");
+        -:   55:		
+        1:   56:	if(testResult == 0)
+    #####:   57:		printf("Accepted\n");
+        -:   58:	else
+        1:   59:		printf("Denied\n");
+        -:   60:				
+        -:   61:		
+        1:   62: 	printf("----- Testing exact amount -----\n");
+        -:   63:	
+        1:   64:	myGameState.coins = 2;
+        1:   65:	myGameState.numBuys = 2;
+        1:   66: 	testResult = buyCard(2, &myGameState);
+        -:   67:	
+        1:   68:	printf("Starting Coins: 2\n");
+        1:   69:	printf("Expected Remaining Coins: 0\n");
+        1:   70:	printf("Actual Remaining Coins: %d\n", myGameState.coins);
+        -:   71:		
+        1:   72:	printf("Starting BuyCount: 2\n");
+        1:   73:	printf("Expected Remaining BuyCount: 1\n");
+        1:   74:	printf("Actual Remaining BuyCount: %d\n", myGameState.numBuys);
+        -:   75:		
+        1:   76:	printf("Should purchase be accepted? YES\n");
+        -:   77:		
+        1:   78:	if(testResult == 0)
+    #####:   79:		printf("Accepted\n");
+        -:   80:	else
+        1:   81:		printf("Denied\n");
+        -:   82:				
+        -:   83:		
+        -:   84:		
+        1:   85:	printf("----- Testing insufficient buy ammount, enough coins -----\n");
+        -:   86:	
+        1:   87:	myGameState.coins = 10;
+        1:   88:	myGameState.numBuys = 0;
+        1:   89: 	testResult = buyCard(2, &myGameState);
+        -:   90:	
+        1:   91:	printf("Starting Coins: 10\n");
+        1:   92:	printf("Expected Remaining Coins: 10\n");
+        1:   93:	printf("Actual Remaining Coins: %d\n", myGameState.coins);
+        -:   94:		
+        1:   95:	printf("Starting BuyCount: 0\n");
+        1:   96:	printf("Expected Remaining BuyCount: 0\n");
+        1:   97:	printf("Actual Remaining BuyCount: %d\n", myGameState.numBuys);
+        -:   98:		
+        1:   99:	printf("Should purchase be accepted? NO\n");
+        -:  100:		
+        1:  101:	if(testResult == 0)
+    #####:  102:		printf("Accepted\n");
+        -:  103:	else
+        1:  104:		printf("Denied\n");
+        -:  105:
+        1:  106:	printf("----- Testing insufficient buy ammount, insufficient coins -----\n");
+        -:  107:	
+        1:  108:	myGameState.coins = 0;
+        1:  109:	myGameState.numBuys = 0;
+        1:  110: 	testResult = buyCard(2, &myGameState);
+        -:  111:	
+        1:  112:	printf("Starting Coins: 0\n");
+        1:  113:	printf("Expected Remaining Coins: 0\n");
+        1:  114:	printf("Actual Remaining Coins: %d\n", myGameState.coins);
+        -:  115:		
+        1:  116:	printf("Starting BuyCount: 0\n");
+        1:  117:	printf("Expected Remaining BuyCount: 0\n");
+        1:  118:	printf("Actual Remaining BuyCount: %d\n", myGameState.numBuys);
+        -:  119:		
+        1:  120:	printf("Should purchase be accepted? NO\n");
+        -:  121:		
+        1:  122:	if(testResult == 0)
+    #####:  123:		printf("Accepted\n");
+        -:  124:	else
+        1:  125:		printf("Denied\n");
+        -:  126:		
+        1:  127:	printf("\n=============== End Testing Buy Card===================\n");
+        -:  128:	
+        1:  129: 	return 0;	
+        -:  130:}

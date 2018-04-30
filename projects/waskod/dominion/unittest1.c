@@ -13,6 +13,7 @@ int main (int argc, char** argv)
 {
 	struct gameState myGameState;
 	myGameState.coins = 0;
+	int i;
 	
 	printf("\n=============== Begin Testing Update Coins ===================\n");
 	
@@ -30,7 +31,7 @@ int main (int argc, char** argv)
 	if(myGameState.coins == 10)
 		printf("Copper Test: Passed\n");
 	else
-		printf("Copper Test: Passed\n");
+		printf("Copper Test: failed\n");
 	
 	printf("\n----- Testing Hand of All Silver -----\n");
 	for(i=0; i < 10; i++)
@@ -46,7 +47,7 @@ int main (int argc, char** argv)
 	if(myGameState.coins == 10)
 		printf("Silver Test: Passed\n");
 	else
-		printf("Silver Test: Passed\n");
+		printf("Silver Test: failed\n");
 	
 	printf("\n----- Testing Hand of All Gold -----\n");
 	for(i=0; i < 10; i++)
@@ -62,10 +63,9 @@ int main (int argc, char** argv)
 	if(myGameState.coins == 10)
 		printf("Gold Test: Passed\n");
 	else
-		printf("Gold Test: Passed\n");
+		printf("Gold Test: failed\n");
 	
 	printf("\n----- Testing Hand of No Coins -----\n");
-	int i;
 	for(i=0; i < 10; i++)
 	{
 		myGameState.hand[0][i] = smithy;
@@ -79,7 +79,7 @@ int main (int argc, char** argv)
 	if(myGameState.coins == 0)
 		printf("None Test: Passed\n");
 	else
-		printf("None Test: Passed\n");
+		printf("None Test: failed\n");
 	
 	printf("\n=============== End Testing Update Coins ===================\n");
 

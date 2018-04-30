@@ -10,7 +10,7 @@
 
 int main (int argc, char** argv)	
 {
-	printf("\n=============== Begin Testing Adventurer Card ===================\n");
+	printf("\n=============== Begin Testing Great Hall Card ===================\n");
 	struct gameState myGameState;
 	int testResult;
 
@@ -24,7 +24,7 @@ int main (int argc, char** argv)
 	printf("Expected number of actions: 1\n");
 	printf("Actual number of actions: %d\n", myGameState.numActions); 
 	
-	printf("\n=============== End Testing Adventurer Card ===================\n");
+	printf("\n=============== End Testing Great Hall Card ===================\n");
 	
 	return 0;
 }
