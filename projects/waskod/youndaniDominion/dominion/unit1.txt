@@ -1,0 +1,28 @@
+
+=============== Begin Testing Update Coins ===================
+
+----- Testing Hand of All Copper -----
+
+Expecting 10 Copper Coins
+Actual Ammount: 0
+Copper Test: failed
+
+----- Testing Hand of All Silver -----
+
+Expecting 10 Silver Coins
+Actual Ammount: 0
+Silver Test: failed
+
+----- Testing Hand of All Gold -----
+
+Expecting 10 Gold Coins
+Actual Ammount: 0
+Gold Test: failed
+
+----- Testing Hand of No Coins -----
+
+Expecting 0 Coins
+Actual Ammount: 0
+None Test: Passed
+
+=============== End Testing Update Coins ===================
