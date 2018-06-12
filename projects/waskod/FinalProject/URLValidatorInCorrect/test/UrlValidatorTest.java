@@ -239,4 +239,63 @@ public class UrlValidatorTest extends TestCase
 		
 		System.out.println("\n==================== END Third Partition ====================\n");
 	}
+	
+	@Test
+	public void testRandom() 
+	{
+
+		System.out.println("\n==================== Random Test ====================\n");
+		
+		int iterations = 100, errorCount = 0;
+		
+		String[] validSchemes = { "http://", "ftp://", "h3t://", "" };
+		String[] validAuths = { "www.google.com", "facebook.com", "github.com", "0.0.0.0", "255.255.255.255"};
+		String[] validPorts = { ":80", ":65535", ":0", "" };
+		String[] validPaths = { "/example", "/abc", "/$99", "/ex/", "", "/ex1/file" };
+		String[] validQueries = { "?action=view", "?action=edit&mode=up", "" };
+
+		// to store failed URL
+		String[] badUrl = new String[iterations];
+		int failIndex = 0;
+
+		for (int i = 0; i < iterations; i++) 
+		{
+			UrlValidator validator = new UrlValidator();
+			
+			int randScheme = (int) (Math.random() * 3);
+			int randAuth = (int) (Math.random() * 4);
+			int randPort = (int) (Math.random() * 3);
+			int randPath = (int) (Math.random() * 5);
+			int randQuer = (int) (Math.random() * 2);
+
+			
+			String test_url = validSchemes[randScheme] + validAuths[randAuth] + validPorts[randPort] + validPaths[randPath] + validQueries[randQuer];
+
+			
+			// check the generated URL
+			boolean isValid = validator.isValid(test_url);
+
+			if (isValid == false) 
+			{
+				errorCount++;
+				badUrl[failIndex] = test_url;
+				failIndex++;
+			} 
+			else 
+			{
+				System.out.println("NO ERROR: "+test_url);
+			}
+		}
+
+		System.out.println("Total Error Count: " + errorCount + "\n");
+		System.out.println("Failed URLs: \n");
+		
+		for (int i = 0; i < badUrl.length; i++) 
+		{
+			if (badUrl[i] != null) 
+			{
+				System.out.println(badUrl[i] + "\n");
+			} 
+		}
+	}
 }
