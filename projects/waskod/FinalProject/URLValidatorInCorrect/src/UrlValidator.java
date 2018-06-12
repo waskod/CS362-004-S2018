@@ -279,7 +279,7 @@ public class UrlValidator implements Serializable {
             }
             allowedSchemes = new HashSet<String>(schemes.length);
             for(int i=0; i < schemes.length; i++) {
-                allowedSchemes.add(schemes[i].toUpperCase(Locale.ENGLISH));
+                allowedSchemes.add(schemes[i].toLowerCase(Locale.ENGLISH));  // changed from toUpperCase
 
             }
         }
@@ -305,39 +305,52 @@ public class UrlValidator implements Serializable {
         // Check the whole url address structure
         Matcher urlMatcher = URL_PATTERN.matcher(value);
         if (!urlMatcher.matches()) {
+
             return false;
         }
 
         String scheme = urlMatcher.group(PARSE_URL_SCHEME);
         if (!isValidScheme(scheme)) {
+
             return false;
         }
 
         String authority = urlMatcher.group(PARSE_URL_AUTHORITY);
-
-        if ("http".equals(scheme)) {// Special case - file: allows an empty authority
-            if (authority != null) {
-                if (authority.contains(":")) { // but cannot allow trailing :
+        
+        
+        // BUG: returns false for all ports with scheme http because the .contains only looks for a :, not whether a : is followed by a number
+        
+        if ("http".equals(scheme)) 
+        {// Special case - file: allows an empty authority
+            if (authority != null) 
+            {
+                if (authority.contains(":")) 
+                { // but cannot allow trailing :
                     return false;
                 }
+                // missing case for authority not null, but contains port after :
             }
             // drop through to continue validation
         } else { // not file:
             // Validate the authority
             if (!isValidAuthority(authority)) {
+
                 return false;
             }
         }
 
         if (!isValidPath(urlMatcher.group(PARSE_URL_PATH))) {
+
             return false;
         }
 
         if (!isValidQuery(urlMatcher.group(PARSE_URL_QUERY))) {
+
             return false;
         }
 
         if (!isValidFragment(urlMatcher.group(PARSE_URL_FRAGMENT))) {
+
             return false;
         }
 
@@ -357,6 +370,7 @@ public class UrlValidator implements Serializable {
         if (scheme == null) {
             return false;
         }
+        
 
         // TODO could be removed if external schemes were checked in the ctor before being stored
         if (!SCHEME_PATTERN.matcher(scheme).matches()) {
@@ -382,6 +396,7 @@ public class UrlValidator implements Serializable {
      */
     protected boolean isValidAuthority(String authority) {
         if (authority == null) {
+
             return false;
         }
 
@@ -417,7 +432,11 @@ public class UrlValidator implements Serializable {
                     return false;
                 }
             }
+            
+            
             String port = authorityMatcher.group(PARSE_AUTHORITY_PORT);
+            
+            
             if (port != null && port.length() > 0) {
                 try {
                     int iPort = Integer.parseInt(port);
